@@ -4,11 +4,11 @@ inputs:
   app_id:
     description: "github app id"
     required: true
-  private_key:
-    description: "github app private key"
-    required: true
   installationId:
     description: "github app installationId"
+    required: true
+  private_key:
+    description: "github app private key"
     required: true
   config_file:
     description: "manager config file"

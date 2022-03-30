@@ -5,7 +5,7 @@ github actions for teams manage
 ## Features
 
 1. Create team if not exist
-2. Set Parent Team
+2. Set parent team
 3. Add member
 4. Manage repositories and set permission
 5. Manage projects and set permission
@@ -17,11 +17,11 @@ inputs:
   app_id:
     description: "github app id"
     required: true
-  private_key:
-    description: "github app private key"
-    required: true
   installationId:
     description: "github app installationId"
+    required: true
+  private_key:
+    description: "github app private key"
     required: true
   config_file:
     description: "manager config file"
@@ -59,7 +59,7 @@ jobs:
           config_file: teams.yaml
 ```
 
-1. Add `teams.yaml` config file to organization repository
+1. Add `teams.yaml` config file to repository
 
 ```yaml
 teams:
