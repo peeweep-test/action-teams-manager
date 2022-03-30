@@ -1,0 +1,19 @@
+name: "Teams Manager"
+description: "Manage teams repository and members"
+inputs:
+  app_id:
+    description: "github app id"
+    required: true
+  private_key:
+    description: "github app private key"
+    required: true
+  installationId:
+    description: "github app installationId"
+    required: true
+  config_file:
+    description: "manager config file"
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
