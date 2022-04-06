@@ -26,6 +26,14 @@ inputs:
   config_file:
     description: "manager config file"
     required: true
+  generate_yaml:
+    description: "generate Yaml for org"
+    required: false
+    default: false
+  update_teams:
+    description: "update teams settings by local yaml for org"
+    required: false
+    default: true
 ```
 
 ## Uses
