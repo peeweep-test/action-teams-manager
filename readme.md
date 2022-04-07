@@ -39,9 +39,9 @@ inputs:
 ## Uses
 
 1. Create and Install GitHub App in organization settings
-1. Get AppID (App setting -> General) and InstallationID (App setting -> Advanced -> Recent Deliveries -> Payload)
-1. Generate GitHub App Private Key and upload to organization secrets
-1. Add `.github/workflows/teams-manager.yml` to organization repository
+2. Get AppID (App setting -> General) and InstallationID (App setting -> Advanced -> Recent Deliveries -> Payload)
+3. Generate GitHub App Private Key and upload to organization secrets
+4. Add `.github/workflows/teams-manager.yml` to organization repository
 
 ```yaml
 name: teams-manager
@@ -67,7 +67,7 @@ jobs:
           config_file: teams.yaml
 ```
 
-1. Add `teams.yaml` config file to repository
+Add `teams.yaml` config file to repository
 
 ```yaml
 teams:
