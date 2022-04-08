@@ -89,4 +89,5 @@ teams:
           - project2
       - read:
           - project2
+          - "*" # all projects
 ```

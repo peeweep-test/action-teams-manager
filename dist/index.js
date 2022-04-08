@@ -168,9 +168,16 @@ async function updateRepoPermissions(team) {
   // https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions
   permissions = ["pull", "push", "admin", "maintain", "triage"];
 
-  for (const [permission, repos] of Object.entries(
+  reposInOrgSet = await getReposInOrg();
+
+  for (let [permission, repos] of Object.entries(
     team.repositories_permissions
   )) {
+    // if wildcard matched, update repos
+    if (repos.indexOf("*") > -1) {
+      repos = reposInOrgSet;
+    }
+
     for (let repo of repos) {
       const permissionUpdate =
         await appOctokit.rest.teams.addOrUpdateRepoPermissionsInOrg({
@@ -187,6 +194,38 @@ async function updateRepoPermissions(team) {
         permission
       );
     }
+  }
+}
+
+async function getReposInOrg() {
+  try {
+    reposInOrg = [];
+    lastPageLen = 100;
+    page = 0;
+    while (true) {
+      page++;
+      try {
+        const { data } = await appOctokit.rest.repos.listForOrg({
+          org,
+          per_page: 100,
+          page,
+        });
+
+        for (let reposListMember of data) {
+          repoName = reposListMember.name;
+          reposInOrg.push(repoName);
+        }
+        if (data.length < 100) {
+          break;
+        }
+      } catch (e) {
+        throw e;
+      }
+    }
+
+    return reposInOrg;
+  } catch (e) {
+    throw e;
   }
 }
 
